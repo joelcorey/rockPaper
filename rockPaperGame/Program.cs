@@ -11,16 +11,35 @@ namespace rockPaperGame
         static void Main(string[] args)
         {
 
-            // commit consistently
-            // properly incorporate inheritance
-            // 
+            // consistent commits. 
+            // incorporate inheritance into my game.
+            // account for and handle bad user input, ensuring that any user input is validated and reobtained if necessary.
+            // store all of the gesture options / choices in a List< T >.
+            // the correct player to win a given round based on the choices*made by each player.
+            // the game of RPSLS to be at minimum a ‘best of three’ to decide a winner.
+            // option of a single player (human vs AI) or a multiplayer(human vs human) game.
+            //* Rock crushes Scissors
+            // Scissors cuts Paper
+            // Paper covers Rock
+            // Rock crushes Lizard
+            // Lizard poisons Spock
+            // Spock smashes Scissors
+            // Scissors decapitates Lizard
+            // Lizard eats Paper
+            // Paper disproves Spock
+            // Spock vaporizes Rock
+            
 
             GameConfig gameConfig = new GameConfig();
-            
-            foreach (var gesture in gameConfig.gestures)
+
+            foreach (var g in gameConfig.gestures)
             {
-                Console.WriteLine(gesture);
+                Console.WriteLine(g);
             }
+            
+            //gameConfig.makeList();
+            Console.ReadLine();
+
         }
     }
 }
