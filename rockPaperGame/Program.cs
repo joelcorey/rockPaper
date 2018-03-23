@@ -18,7 +18,7 @@ namespace rockPaperGame
             // the correct player to win a given round based on the choices*made by each player.
             // the game of RPSLS to be at minimum a ‘best of three’ to decide a winner.
             // option of a single player (human vs AI) or a multiplayer(human vs human) game.
-            //* Rock crushes Scissors
+            // Rock crushes Scissors
             // Scissors cuts Paper
             // Paper covers Rock
             // Rock crushes Lizard
@@ -29,12 +29,12 @@ namespace rockPaperGame
             // Paper disproves Spock
             // Spock vaporizes Rock
             
-
+            
             GameConfig gameConfig = new GameConfig();
 
-            foreach (var g in gameConfig.gestures)
+            foreach (var r in gameConfig.rules)
             {
-                Console.WriteLine(g);
+                Console.WriteLine(r);
             }
             
             //gameConfig.makeList();
