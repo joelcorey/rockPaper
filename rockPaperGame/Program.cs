@@ -12,7 +12,7 @@ namespace rockPaperGame
         {
 
             // consistent commits. 
-            // incorporate inheritance into my game.
+            // incorporate inheritance into game.
             // account for and handle bad user input, ensuring that any user input is validated and reobtained if necessary.
             // store all of the gesture options / choices in a List< T >.
             // the correct player to win a given round based on the choices*made by each player.
@@ -28,15 +28,17 @@ namespace rockPaperGame
             // Lizard eats Paper
             // Paper disproves Spock
             // Spock vaporizes Rock
-            
-            
-            GameConfig gameConfig = new GameConfig();
 
-            foreach (var r in gameConfig.rules)
-            {
-                Console.WriteLine(r);
-            }
-            
+
+            GameState gameState = new GameState();
+            Screen screen = new Screen();
+
+     
+            //string gameCurrentState = gameState.gameState;
+            screen.mainMenu(gameState.gestures);
+            gameState.playPlayer(gameState.gameState);
+            int decideWinner = gameState.whoWins(0, 1);
+            Console.WriteLine(decideWinner);
             //gameConfig.makeList();
             Console.ReadLine();
 

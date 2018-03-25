@@ -5,6 +5,9 @@ namespace rockPaperGame
 {
     class GameConfig
     {
+        public string gameState = "verseComputer";
+        public int gameRound = 1;
+
         public List<string> gestures = new List<string>(new string[] {
             "rock",
             "paper",
