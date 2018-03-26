@@ -17,6 +17,20 @@ namespace rockPaperGame
             }
         }
 
+        //validate input method:
+        public bool validateInput(List<string> gestures, string playerChoice)
+        {
+            if (!gestures.Contains(playerChoice))
+            {
+                Console.WriteLine("Please enter valid input");
+                return false;
+            }
+            return true;
+        }
+
+
+       //convert gesture to numeric value method:
+
         // https://stackoverflow.com/questions/9553058/scalable-solution-for-rock-paper-scissor
         public int whoWins(int playerA, int playerB)
         {

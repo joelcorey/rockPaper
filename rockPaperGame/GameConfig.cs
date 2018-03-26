@@ -7,6 +7,9 @@ namespace rockPaperGame
     {
         public string gameState = "verseComputer";
         public int gameRound = 1;
+        public string currentPlayer = "Player one";
+        public string playerOneChoice = "";
+        public string playerTwoChoice = "";
 
         public List<string> gestures = new List<string>(new string[] {
             "rock",
