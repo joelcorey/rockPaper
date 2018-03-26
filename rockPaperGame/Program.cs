@@ -19,38 +19,12 @@ namespace rockPaperGame
             // the game of RPSLS to be at minimum a ‘best of three’ to decide a winner.
             // option of a single player (human vs AI) or a multiplayer(human vs human) game.
 
-            GameState gameState = new GameState();
-            Screen screen = new Screen();
-
-            gameState.buildMenu("Welcome to " + string.Join(" ", gameState.gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
-            List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
-            gameState.playerInput = Console.ReadLine();
-            gameState.validationCheck = gameState.validateInput(acceptableInput, gameState.playerInput);
-
-            if (gameState.playerInput.ToLower() == "p" && gameState.validationCheck == true)
-            {
-                gameState.buildMenu("Player One please chose:", string.Join(" ", gameState.gestures.ToArray()));
-                gameState.playerOneChoice = gameState.gestureToInt(Console.ReadLine());
-                
-                gameState.buildMenu("Player two please chose:", string.Join(" ", gameState.gestures.ToArray()));
-                gameState.playerTwoChoice = gameState.gestureToInt(Console.ReadLine());
-
-                int decideWinner = gameState.whoWins(gameState.playerOneChoice, gameState.playerTwoChoice);
-                if (decideWinner == 1)
-                {
-                    Console.WriteLine("Player one wins with " + gameState.gestures[gameState.playerOneChoice]);
-                }
-            }
-            
+            Game game = new Game();
+            game.gameStart();
+            game.gameLoop(game.roundLimit);
             
 
-            //gameState.playerOneChoice = Console.ReadLine();
 
-            //gameState.playPlayer(gameState.gameState);
-            //screen.showGesture()
-            
-            
-            
             Console.ReadLine();
             
         }

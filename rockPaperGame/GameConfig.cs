@@ -11,6 +11,7 @@ namespace rockPaperGame
         public string playerInput;
         public string gameState = "verseComputer";
         public int gameRound = 1;
+        public int roundLimit = 3;
         public string currentPlayer = "Player one";
         public int playerOneChoice;
         public int playerTwoChoice;

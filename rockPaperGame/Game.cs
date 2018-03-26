@@ -6,22 +6,30 @@ using System.Threading.Tasks;
 
 namespace rockPaperGame
 {
-    class GameState : GameConfig
+    class Game : GameConfig
     {
+        Display display = new Display();
 
-        public void playPlayer(string state)
+        public void gameStart()
         {
-            if (state == "verseComputer")
-            {
-                Console.WriteLine(state);
-            }
+            display.buildMenu("Welcome to " + string.Join(" ", gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
+            List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
+            playerInput = Console.ReadLine();
+            validationCheck = validateInput(acceptableInput, playerInput);
         }
 
-        public void buildMenu(string menuMessage, string menuOptions)
+        public void gameLoop(int roundLimit)
         {
-            Console.Clear();
-            Console.WriteLine(menuMessage);
-            Console.WriteLine(menuOptions);
+            if (playerInput.ToLower() == "p" && validationCheck == true)
+            {
+                display.buildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
+                playerOneChoice = gestureToInt(Console.ReadLine());
+
+                display.buildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
+                playerTwoChoice = gestureToInt(Console.ReadLine());
+            }
+            int decideWinner = whoWins(playerOneChoice, playerTwoChoice);
+            displayWhoWon(decideWinner);
         }
 
         //validate input method:
@@ -33,6 +41,21 @@ namespace rockPaperGame
                 return false;
             }
             return true;
+        }
+
+        public void displayWhoWon(int input) {
+            if (input == 1)
+            {
+                Console.WriteLine("Player one wins with " + gestures[playerOneChoice]);
+            }
+                else if (input == 2)
+            {
+                Console.WriteLine("Player two wins with " + gestures[playerTwoChoice]);
+            }
+            else if (input == 3)
+            {
+                Console.WriteLine("It's a tie!");
+            }
         }
 
         //convert gesture to numeric value method:
