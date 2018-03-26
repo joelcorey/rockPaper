@@ -33,37 +33,24 @@ namespace rockPaperGame
             GameState gameState = new GameState();
             Screen screen = new Screen();
 
-     
+
             //string gameCurrentState = gameState.gameState;
             screen.mainMenu(gameState.gestures);
             screen.pickGesture(gameState.gestures, gameState.currentPlayer);
             //gameState.playPlayer(gameState.gameState);
 
-            if (gameState.currentPlayer == "Player one")
-            {
-                string playerOneChoice = Console.ReadLine();
-                while (!gameState.validateInput(gameState.gestures, gameState.playerOneChoice))
-                {
-                    gameState.validateInput(gameState.gestures, gameState.playerOneChoice);
-                }
-                gameState.currentPlayer = "Player two";
-            }
-            else if (gameState.currentPlayer == "Player two")
-            {
-                string playerOneChoice = Console.ReadLine();
-                while (!gameState.validateInput(gameState.gestures, gameState.playerTwoChoice))
-                {
-                    gameState.validateInput(gameState.gestures, gameState.playerTwoChoice);
-                }
-                
-            }
+            gameState.playerOneChoice = Console.ReadLine();
+
+            //public List<string> acceptableInput = new List<string>(new string[] {"derp", "lerp"});
             
+
+            //gameState.validateInput(acceptableInput);
             //screen.showGesture()
             int decideWinner = gameState.whoWins(0, 1);
             Console.WriteLine(decideWinner);
             //gameConfig.makeList();
             Console.ReadLine();
-
+            
         }
     }
 }

@@ -10,6 +10,7 @@ namespace rockPaperGame
         public string currentPlayer = "Player one";
         public string playerOneChoice = "";
         public string playerTwoChoice = "";
+        public bool validationCheck = false;
 
         public List<string> gestures = new List<string>(new string[] {
             "rock",

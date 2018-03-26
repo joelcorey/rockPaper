@@ -18,14 +18,12 @@ namespace rockPaperGame
         }
 
         //validate input method:
-        public bool validateInput(List<string> gestures, string playerChoice)
+        public void validateInput<T>(IEnumerable<T> list)
         {
-            if (!gestures.Contains(playerChoice))
+            foreach (var l in list)
             {
-                Console.WriteLine("Please enter valid input");
-                return false;
+                Console.WriteLine(l);
             }
-            return true;
         }
 
 
