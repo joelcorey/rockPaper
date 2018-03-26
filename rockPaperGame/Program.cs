@@ -27,9 +27,19 @@ namespace rockPaperGame
             gameState.playerInput = Console.ReadLine();
             gameState.validationCheck = gameState.validateInput(acceptableInput, gameState.playerInput);
 
-            if (gameState.mainChoice.ToLower() == "p" && gameState.validationCheck == true)
+            if (gameState.playerInput.ToLower() == "p" && gameState.validationCheck == true)
             {
-                gameState.buildMenu(gameState.currentPlayer + " please chose:", string.Join(" ", gameState.gestures.ToArray()));
+                gameState.buildMenu("Player One please chose:", string.Join(" ", gameState.gestures.ToArray()));
+                gameState.playerOneChoice = gameState.gestureToInt(Console.ReadLine());
+                
+                gameState.buildMenu("Player two please chose:", string.Join(" ", gameState.gestures.ToArray()));
+                gameState.playerTwoChoice = gameState.gestureToInt(Console.ReadLine());
+
+                int decideWinner = gameState.whoWins(gameState.playerOneChoice, gameState.playerTwoChoice);
+                if (decideWinner == 1)
+                {
+                    Console.WriteLine("Player one wins with " + gameState.gestures[gameState.playerOneChoice]);
+                }
             }
             
             
@@ -38,9 +48,9 @@ namespace rockPaperGame
 
             //gameState.playPlayer(gameState.gameState);
             //screen.showGesture()
-            int decideWinner = gameState.whoWins(0, 1);
-            Console.WriteLine(decideWinner);
-            //gameConfig.makeList();
+            
+            
+            
             Console.ReadLine();
             
         }

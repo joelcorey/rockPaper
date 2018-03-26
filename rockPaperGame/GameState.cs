@@ -19,6 +19,7 @@ namespace rockPaperGame
 
         public void buildMenu(string menuMessage, string menuOptions)
         {
+            Console.Clear();
             Console.WriteLine(menuMessage);
             Console.WriteLine(menuOptions);
         }
@@ -34,8 +35,29 @@ namespace rockPaperGame
             return true;
         }
 
+        //convert gesture to numeric value method:
+        public int gestureToInt(string input)
+        {
+            input.ToLower();
+            switch (input)
+            {
+                case "rock":
+                    return 0;
+                case "paper":
+                    return 1;
+                case "scissors":
+                    return 2;
+                case "lizard":
+                    return 3;
+                case "spock":
+                    return 4;
+                default:
+                    return 5;
+            }
 
-       //convert gesture to numeric value method:
+        }
+
+        //public void doRound(playerOneChoice, playerTwoChoice)
 
         // https://stackoverflow.com/questions/9553058/scalable-solution-for-rock-paper-scissor
         public int whoWins(int playerA, int playerB)
@@ -43,17 +65,17 @@ namespace rockPaperGame
             int whoWon = (5 + playerA - playerB) % 5;
             int returnValue = 0;
 
-            if (whoWon == 1 || whoWon == 3)
+            if (whoWon == 1 || whoWon == 3) // player 1 wins
             {
                 returnValue = 1;
                 return returnValue;
             }
-            else if (whoWon == 2 || whoWon == 4)
+            else if (whoWon == 2 || whoWon == 4) // player 2 wins
             {
                 returnValue = 2;
                 return returnValue;
             }
-            else if (whoWon == 0)
+            else if (whoWon == 0) // tie
             {
                 returnValue = 3;
                 return returnValue;

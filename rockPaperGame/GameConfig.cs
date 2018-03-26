@@ -8,12 +8,12 @@ namespace rockPaperGame
         public string menuMessage = "";
         public string menuOptions = "";
         public string mainChoice = "";
-        public string playerInput = "";
+        public string playerInput;
         public string gameState = "verseComputer";
         public int gameRound = 1;
         public string currentPlayer = "Player one";
-        public string playerOneChoice = "";
-        public string playerTwoChoice = "";
+        public int playerOneChoice;
+        public int playerTwoChoice;
         public bool validationCheck = false;
 
         public List<string> gestures = new List<string>(new string[] {
