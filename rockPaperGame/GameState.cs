@@ -18,12 +18,14 @@ namespace rockPaperGame
         }
 
         //validate input method:
-        public void validateInput<T>(IEnumerable<T> list)
+        public bool validateInput(List<string> expectedInput, string playerInput)
         {
-            foreach (var l in list)
+            playerInput.ToLower();
+            if (!expectedInput.Contains(playerInput))
             {
-                Console.WriteLine(l);
+                return false;
             }
+            return true;
         }
 
 

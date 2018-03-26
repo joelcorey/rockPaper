@@ -5,6 +5,8 @@ namespace rockPaperGame
 {
     class GameConfig
     {
+        public string mainChoice = "";
+        public string playerInput = "";
         public string gameState = "verseComputer";
         public int gameRound = 1;
         public string currentPlayer = "Player one";
