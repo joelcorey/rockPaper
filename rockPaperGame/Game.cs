@@ -23,16 +23,22 @@ namespace rockPaperGame
             if (playerInput.ToLower() == "p" && validationCheck == true)
             {
                 display.buildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
-                playerOneChoice = gestureToInt(Console.ReadLine());
+                playerOneChoice = (Console.ReadLine());
 
                 display.buildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
-                playerTwoChoice = gestureToInt(Console.ReadLine());
+                playerTwoChoice = (Console.ReadLine());
+
+                playerOneNumber = gestureToInt(playerOneChoice);
+                playerTwoNumber = gestureToInt(playerTwoChoice);
             }
-            int decideWinner = whoWins(playerOneChoice, playerTwoChoice);
+
+            Console.WriteLine("Player one numeric choice: " + playerOneChoice);
+            Console.WriteLine("Player two numeric choice " + playerTwoChoice);
+
+            int decideWinner = whoWins(playerOneNumber, playerTwoNumber);
             displayWhoWon(decideWinner);
         }
 
-        //validate input method:
         public bool validateInput(List<string> expectedInput, string playerInput)
         {
             playerInput.ToLower();
@@ -44,13 +50,15 @@ namespace rockPaperGame
         }
 
         public void displayWhoWon(int input) {
+            Console.WriteLine("Player one chose: {0}", playerOneChoice);
+            Console.WriteLine("Player one chose: {0}", playerTwoChoice);
             if (input == 1)
             {
-                Console.WriteLine("Player one wins with " + gestures[playerOneChoice]);
+                Console.WriteLine("Player one wins");
             }
-                else if (input == 2)
+            else if (input == 2)
             {
-                Console.WriteLine("Player two wins with " + gestures[playerTwoChoice]);
+                Console.WriteLine("Player two wins");
             }
             else if (input == 3)
             {
@@ -61,50 +69,53 @@ namespace rockPaperGame
         //convert gesture to numeric value method:
         public int gestureToInt(string input)
         {
-            input.ToLower();
-            switch (input)
+            switch (input.ToLower())
             {
                 case "rock":
-                    return 0;
-                case "paper":
                     return 1;
-                case "scissors":
+                case "paper":
                     return 2;
-                case "lizard":
+                case "scissors":
                     return 3;
-                case "spock":
+                case "lizard":
                     return 4;
-                default:
+                case "spock":
                     return 5;
+                default:
+                    Console.WriteLine("Invalid gestureToInt({0})", input);
+                    return 6;
             }
-
         }
 
         //public void doRound(playerOneChoice, playerTwoChoice)
 
         // https://stackoverflow.com/questions/9553058/scalable-solution-for-rock-paper-scissor
-        public int whoWins(int playerA, int playerB)
+        public int whoWins(int playerOne, int playerTwo)
         {
-            int whoWon = (5 + playerA - playerB) % 5;
+            int whoWon = (5 + playerOne - playerTwo) % 5;
             int returnValue = 0;
 
-            if (whoWon == 1 || whoWon == 3) // player 1 wins
+            if (whoWon == 0) // tie
             {
+                Console.WriteLine("TIE: whoWins.whoWon = " + whoWon);
+                returnValue = 3;
+                return returnValue;
+            }
+            else if (whoWon == 1 || whoWon == 3) // player 1 wins
+            {
+                Console.WriteLine("PLAYER1 WINS: whoWins.whoWon = " + whoWon);
                 returnValue = 1;
                 return returnValue;
             }
             else if (whoWon == 2 || whoWon == 4) // player 2 wins
             {
+                Console.WriteLine("PLAYER2 WINS: whoWins.whoWon = " + whoWon);
                 returnValue = 2;
-                return returnValue;
-            }
-            else if (whoWon == 0) // tie
-            {
-                returnValue = 3;
                 return returnValue;
             }
             else
             {
+                Console.WriteLine("Invalid else block reached, check whoWins case statement");
                 return returnValue;
             }
 
