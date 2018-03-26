@@ -17,6 +17,12 @@ namespace rockPaperGame
             }
         }
 
+        public void buildMenu(string menuMessage, string menuOptions)
+        {
+            Console.WriteLine(menuMessage);
+            Console.WriteLine(menuOptions);
+        }
+
         //validate input method:
         public bool validateInput(List<string> expectedInput, string playerInput)
         {

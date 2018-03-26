@@ -5,6 +5,8 @@ namespace rockPaperGame
 {
     class GameConfig
     {
+        public string menuMessage = "";
+        public string menuOptions = "";
         public string mainChoice = "";
         public string playerInput = "";
         public string gameState = "verseComputer";
@@ -15,10 +17,10 @@ namespace rockPaperGame
         public bool validationCheck = false;
 
         public List<string> gestures = new List<string>(new string[] {
-            "rock",
-            "paper",
-            "scissors",
-            "lizard",
+            "Rock",
+            "Paper",
+            "Scissors",
+            "Lizard",
             "Spock"
         });
 

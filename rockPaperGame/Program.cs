@@ -35,11 +35,17 @@ namespace rockPaperGame
 
 
             //string gameCurrentState = gameState.gameState;
-            screen.mainMenu(gameState.gestures);
-            screen.pickGesture(gameState.gestures, gameState.currentPlayer);
+            //screen.mainMenu(gameState.gestures);
+
+            gameState.menuMessage = string.Join(" ", gameState.gestures.ToArray());
+            gameState.menuOptions = "Would you like to verse another (P)layer or the (C)omputer";
+            
+            gameState.buildMenu(gameState.menuMessage, gameState.menuOptions);
+            List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
+            //screen.pickGesture(gameState.gestures, gameState.currentPlayer);
             gameState.mainChoice = Console.ReadLine();
 
-            List<string> acceptableInput = new List<string>(new string[] { "p", "c"});
+            //List<string> acceptableInput = new List<string>(new string[] { "p", "c"});
             gameState.validationCheck = gameState.validateInput(acceptableInput, gameState.mainChoice);
 
             //gameState.playerOneChoice = Console.ReadLine();
