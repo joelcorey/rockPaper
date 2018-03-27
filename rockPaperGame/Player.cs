@@ -67,6 +67,5 @@ namespace rockPaperGame
         {
             score += increment;
         }
-
     }
 }

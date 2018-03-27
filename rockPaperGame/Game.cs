@@ -27,7 +27,6 @@ namespace rockPaperGame
         public void GameLoop()
         {
             playerOne = new Player("Player one", 0, 0, gestures);
-            //Player playerTwo = new Player("Player two", 0, 0, gestures);
 
             if (mainMenuChoice == "c")
             {
@@ -55,13 +54,24 @@ namespace rockPaperGame
                 }
 
                 DisplayWhoWon(decideWinner, playerOne.getName(), playerOne.GetScore(), playerTwo.getName(), playerTwo.GetScore());
+                DisplayWinText(playerOneChoice, playerTwoChoice, gestures);
                 round += 1;
                 Console.WriteLine("When you are ready to proceed, press a key");
                 Console.ReadLine();
             }
 
             OverallWinner(playerOne.GetScore(), playerTwo.GetScore());
-            EndGame();
+        }
+
+        public void DisplayWinText(string playerOneChoice, string playerTwoChoice, List<string> rules)
+        {
+            foreach (var r in rules)
+            {
+                if (r.Contains(playerOneChoice) && r.Contains(playerTwoChoice))
+                {
+                    Console.WriteLine(r);
+                }
+            }
         }
 
         public void OverallWinner(int playerOneScore, int playerTwoScore)
@@ -82,7 +92,7 @@ namespace rockPaperGame
 
         public void EndGame()
         {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("Thanks for playing!");
             Console.WriteLine("Press any key to exit.");
             Console.ReadLine();
@@ -163,9 +173,6 @@ namespace rockPaperGame
                 Console.WriteLine("Invalid else block reached, check whoWins case statement");
                 return returnValue;
             }
-
         }
-
     }
-
 }

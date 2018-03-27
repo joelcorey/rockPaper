@@ -22,8 +22,6 @@ namespace rockPaperGame
             game.GameStart();
             game.GameLoop();
             game.EndGame();
-
-            
         }
     }
 }

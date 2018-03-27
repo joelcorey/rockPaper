@@ -34,8 +34,6 @@ namespace rockPaperGame
             "Lizard eats Paper",
             "Paper disproves Spock",
             "Spock vaporizes Rock"
-        } );
-
+        });
     }
-
 }
