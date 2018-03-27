@@ -12,30 +12,23 @@ namespace rockPaperGame
 
         public void GameStart()
         {
-            display.buildMenu("Welcome to " + string.Join(" ", gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
-            List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
-            playerInput = Console.ReadLine();
-            validationCheck = validateInput(acceptableInput, playerInput);
-
-            if (validationCheck == true)
+            while (!validationCheck)
             {
-                GameLoop(roundLimit);
+                display.BuildMenu("Welcome to " + string.Join(" ", gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
+                List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
+                playerInput = Console.ReadLine();
+                validationCheck = ValidateInput(acceptableInput, playerInput);
             }
-            else
-            {
-                GameStart();
-            }
-
         }
 
         public void GameLoop(int roundLimit)
         {
             //if (playerInput.ToLower() == "p" && validationCheck == true)
             //{
-                display.buildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
+                display.BuildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
                 playerOneChoice = (Console.ReadLine());
 
-                display.buildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
+                display.BuildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
                 playerTwoChoice = (Console.ReadLine());
 
                 playerOneNumber = GestureToInt(playerOneChoice);

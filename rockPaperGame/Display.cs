@@ -8,7 +8,7 @@ namespace rockPaperGame
 {
     class Display
     {
-        public void buildMenu(string menuMessage, string menuOptions)
+        public void BuildMenu(string menuMessage, string menuOptions)
         {
             Console.Clear();
             Console.WriteLine(menuMessage);
