@@ -23,19 +23,28 @@ namespace rockPaperGame
 
         public void GameLoop()
         {
+            Player playerOne = new Player("Player one", 0, 0, gestures);
+            Player playerTwo = new Player("Player two", 0, 0, gestures);
+
+            display.BuildMenu("Please chose:", string.Join(" ", gestures.ToArray()));
+
+            playerOneChoice = playerOne.GetGesture();
+            playerTwoChoice = playerTwo.GetGesture();
+
+            Console.WriteLine(playerOneChoice);
+            Console.WriteLine(playerTwoChoice);
+
             //if (playerInput.ToLower() == "p" && validationCheck == true)
             //{
-                display.BuildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
-                playerOneChoice = (Console.ReadLine());
+            //display.BuildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
+            //    playerOneChoice = (Console.ReadLine());
 
-                display.BuildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
-                playerTwoChoice = (Console.ReadLine());
+            //    display.BuildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
+            //    playerTwoChoice = (Console.ReadLine());
 
-                playerOneNumber = GestureToInt(playerOneChoice);
-                playerTwoNumber = GestureToInt(playerTwoChoice);
+            //    playerOneNumber = GestureToInt(playerOneChoice);
+            //    playerTwoNumber = GestureToInt(playerTwoChoice);
             //}
-
-            
 
             int decideWinner = WhoWins(playerOneNumber, playerTwoNumber);
             DisplayWhoWon(decideWinner);
