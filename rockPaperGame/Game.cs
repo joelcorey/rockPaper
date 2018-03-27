@@ -34,16 +34,13 @@ namespace rockPaperGame
             Console.WriteLine(playerOneChoice);
             Console.WriteLine(playerTwoChoice);
 
-            playerOneNumber = GestureToInt(playerOneChoice);
-            playerTwoNumber = GestureToInt(playerTwoChoice);
-
             //display.BuildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
             //    playerOneChoice = (Console.ReadLine());
 
             //    display.BuildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
             //    playerTwoChoice = (Console.ReadLine());
 
-            int decideWinner = WhoWins(playerOneNumber, playerTwoNumber); // could directly call GestureToInt here
+            int decideWinner = WhoWins(GestureToInt(playerOneChoice), GestureToInt(playerTwoChoice));
             DisplayWhoWon(decideWinner);
         }
 
