@@ -20,8 +20,8 @@ namespace rockPaperGame
             // option of a single player (human vs AI) or a multiplayer(human vs human) game.
 
             Game game = new Game();
-            game.gameStart();
-            game.gameLoop(game.roundLimit);
+            game.GameStart();
+            //game.GameLoop(game.roundLimit);
             
 
 

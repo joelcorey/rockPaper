@@ -10,36 +10,46 @@ namespace rockPaperGame
     {
         Display display = new Display();
 
-        public void gameStart()
+        public void GameStart()
         {
             display.buildMenu("Welcome to " + string.Join(" ", gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
             List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
             playerInput = Console.ReadLine();
             validationCheck = validateInput(acceptableInput, playerInput);
+
+            if (validationCheck == true)
+            {
+                GameLoop(roundLimit);
+            }
+            else
+            {
+                GameStart();
+            }
+
         }
 
-        public void gameLoop(int roundLimit)
+        public void GameLoop(int roundLimit)
         {
-            if (playerInput.ToLower() == "p" && validationCheck == true)
-            {
+            //if (playerInput.ToLower() == "p" && validationCheck == true)
+            //{
                 display.buildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
                 playerOneChoice = (Console.ReadLine());
 
                 display.buildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
                 playerTwoChoice = (Console.ReadLine());
 
-                playerOneNumber = gestureToInt(playerOneChoice);
-                playerTwoNumber = gestureToInt(playerTwoChoice);
-            }
+                playerOneNumber = GestureToInt(playerOneChoice);
+                playerTwoNumber = GestureToInt(playerTwoChoice);
+            //}
 
             Console.WriteLine("Player one numeric choice: " + playerOneChoice);
             Console.WriteLine("Player two numeric choice " + playerTwoChoice);
 
-            int decideWinner = whoWins(playerOneNumber, playerTwoNumber);
-            displayWhoWon(decideWinner);
+            int decideWinner = WhoWins(playerOneNumber, playerTwoNumber);
+            DisplayWhoWon(decideWinner);
         }
 
-        public bool validateInput(List<string> expectedInput, string playerInput)
+        public bool ValidateInput(List<string> expectedInput, string playerInput)
         {
             playerInput.ToLower();
             if (!expectedInput.Contains(playerInput))
@@ -49,7 +59,7 @@ namespace rockPaperGame
             return true;
         }
 
-        public void displayWhoWon(int input) {
+        public void DisplayWhoWon(int input) {
             Console.WriteLine("Player one chose: {0}", playerOneChoice);
             Console.WriteLine("Player one chose: {0}", playerTwoChoice);
             if (input == 1)
@@ -67,7 +77,7 @@ namespace rockPaperGame
         }
 
         //convert gesture to numeric value method:
-        public int gestureToInt(string input)
+        public int GestureToInt(string input)
         {
             switch (input.ToLower())
             {
@@ -90,7 +100,7 @@ namespace rockPaperGame
         //public void doRound(playerOneChoice, playerTwoChoice)
 
         // https://stackoverflow.com/questions/9553058/scalable-solution-for-rock-paper-scissor
-        public int whoWins(int playerOne, int playerTwo)
+        public int WhoWins(int playerOne, int playerTwo)
         {
             int whoWon = (5 + playerOne - playerTwo) % 5;
             int returnValue = 0;
