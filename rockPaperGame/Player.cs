@@ -50,5 +50,10 @@ namespace rockPaperGame
             return true;
         }
 
+        public int GetScore()
+        {
+            return score;
+        }
+
     }
 }
