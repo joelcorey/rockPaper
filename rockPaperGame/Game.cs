@@ -21,7 +21,7 @@ namespace rockPaperGame
             }
         }
 
-        public void GameLoop(int roundLimit)
+        public void GameLoop()
         {
             //if (playerInput.ToLower() == "p" && validationCheck == true)
             //{
@@ -35,8 +35,7 @@ namespace rockPaperGame
                 playerTwoNumber = GestureToInt(playerTwoChoice);
             //}
 
-            Console.WriteLine("Player one numeric choice: " + playerOneChoice);
-            Console.WriteLine("Player two numeric choice " + playerTwoChoice);
+            
 
             int decideWinner = WhoWins(playerOneNumber, playerTwoNumber);
             DisplayWhoWon(decideWinner);
@@ -53,8 +52,9 @@ namespace rockPaperGame
         }
 
         public void DisplayWhoWon(int input) {
-            Console.WriteLine("Player one chose: {0}", playerOneChoice);
-            Console.WriteLine("Player one chose: {0}", playerTwoChoice);
+            Console.Clear();
+            Console.WriteLine("Player one choice: " + playerOneChoice);
+            Console.WriteLine("Player two choice: " + playerTwoChoice);
             if (input == 1)
             {
                 Console.WriteLine("Player one wins");
@@ -69,7 +69,6 @@ namespace rockPaperGame
             }
         }
 
-        //convert gesture to numeric value method:
         public int GestureToInt(string input)
         {
             switch (input.ToLower())
@@ -90,8 +89,6 @@ namespace rockPaperGame
             }
         }
 
-        //public void doRound(playerOneChoice, playerTwoChoice)
-
         // https://stackoverflow.com/questions/9553058/scalable-solution-for-rock-paper-scissor
         public int WhoWins(int playerOne, int playerTwo)
         {
@@ -100,19 +97,16 @@ namespace rockPaperGame
 
             if (whoWon == 0) // tie
             {
-                Console.WriteLine("TIE: whoWins.whoWon = " + whoWon);
                 returnValue = 3;
                 return returnValue;
             }
             else if (whoWon == 1 || whoWon == 3) // player 1 wins
             {
-                Console.WriteLine("PLAYER1 WINS: whoWins.whoWon = " + whoWon);
                 returnValue = 1;
                 return returnValue;
             }
             else if (whoWon == 2 || whoWon == 4) // player 2 wins
             {
-                Console.WriteLine("PLAYER2 WINS: whoWins.whoWon = " + whoWon);
                 returnValue = 2;
                 return returnValue;
             }
