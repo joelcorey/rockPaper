@@ -78,9 +78,9 @@ namespace rockPaperGame
                 case "scissors":
                     return 3;
                 case "lizard":
-                    return 4;
-                case "spock":
                     return 5;
+                case "spock":
+                    return 4;
                 default:
                     Console.WriteLine("Invalid gestureToInt({0})", input);
                     return 6;
