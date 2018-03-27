@@ -16,24 +16,52 @@ namespace rockPaperGame
             {
                 display.BuildMenu("Welcome to " + string.Join(" ", gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
                 List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
-                playerInput = Console.ReadLine();
-                validationCheck = ValidateInput(acceptableInput, playerInput);
+                mainMenuChoice = Console.ReadLine();
+                validationCheck = ValidateInput(acceptableInput, mainMenuChoice);
             }
         }
 
-        public void GameLoop()
+        public void GameLoop(int spread)
         {
             Player playerOne = new Player("Player one", 0, 0, gestures);
             Player playerTwo = new Computer("Player two", 0, 0, gestures);
 
-            playerOneChoice = playerOne.GetGesture();
-            playerTwoChoice = playerTwo.GetGesture();
+            //if (mainMenuChoice == "c")
+            //{
+            //    Player playerTwo = new Computer("Player two", 0, 0, gestures);
+            //}
+            //else
+            //{
+            //    Player playerTwo = new Player("Player two", 0, 0, gestures);
+            //}
+            
+            
 
-            Console.WriteLine(playerOneChoice);
-            Console.WriteLine(playerTwoChoice);
+            while (playerOne.GetScore() - playerTwo.GetScore() <= 3)
+            {
+                playerOneChoice = playerOne.GetGesture();
+                playerTwoChoice = playerTwo.GetGesture();
 
-            int decideWinner = WhoWins(GestureToInt(playerOneChoice), GestureToInt(playerTwoChoice));
-            DisplayWhoWon(decideWinner);
+                //Console.WriteLine(playerOneChoice);
+                //Console.WriteLine(playerTwoChoice);
+
+                int decideWinner = WhoWins(GestureToInt(playerOneChoice), GestureToInt(playerTwoChoice));
+
+                if (decideWinner == 1)
+                {
+                    playerOne.IncreaseScore();
+                }
+                else if (decideWinner == 2)
+                {
+                    playerTwo.IncreaseScore();
+                }
+
+                DisplayWhoWon(decideWinner, playerOne.getName(), playerOne.GetScore(), playerTwo.getName(), playerTwo.GetScore());
+
+                Console.WriteLine("When you are ready to proceed, press a key");
+                Console.ReadLine();
+            }
+            
         }
 
         public bool ValidateInput(List<string> expectedInput, string playerInput)
@@ -46,22 +74,24 @@ namespace rockPaperGame
             return true;
         }
 
-        public void DisplayWhoWon(int input) {
+        public void DisplayWhoWon(int determineWinner, string playerOneName, int playerOneScore, string playerTwoName, int playerTwoScore) {
             //Console.Clear();
-            Console.WriteLine("Player one choice: " + playerOneChoice);
-            Console.WriteLine("Player two choice: " + playerTwoChoice);
-            if (input == 1)
+            
+            if (determineWinner == 1)
             {
+                
                 Console.WriteLine("Player one wins");
             }
-            else if (input == 2)
+            else if (determineWinner == 2)
             {
                 Console.WriteLine("Player two wins");
             }
-            else if (input == 3)
+            else if (determineWinner == 3)
             {
                 Console.WriteLine("It's a tie!");
             }
+            Console.WriteLine("{0} chose {1} and has a score of: {2}", playerOneName, playerOneChoice, playerOneScore);
+            Console.WriteLine("{0} chose {1} and has a score of: {2}", playerTwoName, playerTwoChoice, playerTwoScore);
         }
 
         public int GestureToInt(string input)
@@ -97,6 +127,7 @@ namespace rockPaperGame
             }
             else if (whoWon == 1 || whoWon == 3)
             {
+                
                 returnValue = 1;
                 return returnValue;
             }

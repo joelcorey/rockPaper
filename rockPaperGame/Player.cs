@@ -50,9 +50,19 @@ namespace rockPaperGame
             return true;
         }
 
+        public string getName()
+        {
+            return name;
+        }
+
         public int GetScore()
         {
             return score;
+        }
+
+        public void IncreaseScore()
+        {
+            score += 1;
         }
 
     }

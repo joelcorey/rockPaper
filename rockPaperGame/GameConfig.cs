@@ -7,9 +7,9 @@ namespace rockPaperGame
     {
         public string menuMessage = "";
         public string menuOptions = "";
-        public string mainChoice = "";
-        public string playerInput;
+        public string mainMenuChoice;
         public int gameRound = 1;
+        public int spread;
         public int spreadLimit = 3;
         public string playerOneChoice;
         public string playerTwoChoice;
