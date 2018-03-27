@@ -27,7 +27,8 @@ namespace rockPaperGame
         {
             while (validationCheck == false)
             {
-                Console.WriteLine("{0} please make a choice: ");
+                Console.Clear();
+                Console.WriteLine("{0} please choose from the follow {1} ", name, string.Join(" ", gestures.ToArray()));
                 playerChoice = Console.ReadLine();
                 validationCheck = ValidateInput(gestures, playerChoice);
             }
