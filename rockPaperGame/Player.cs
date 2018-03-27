@@ -63,9 +63,9 @@ namespace rockPaperGame
             return score;
         }
 
-        public void IncreaseScore()
+        public void IncreaseScore(int increment)
         {
-            score += 1;
+            score += increment;
         }
 
     }

@@ -21,11 +21,8 @@ namespace rockPaperGame
 
             Game game = new Game();
             game.GameStart();
-            game.GameLoop(game.spread);
-            
-
-
-            Console.ReadLine();
+            game.GameLoop();
+            game.EndGame();
             
         }
     }

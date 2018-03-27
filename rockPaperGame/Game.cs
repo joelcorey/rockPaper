@@ -21,7 +21,7 @@ namespace rockPaperGame
             }
         }
 
-        public void GameLoop(int spread)
+        public void GameLoop()
         {
             Player playerOne = new Player("Player one", 0, 0, gestures);
             Player playerTwo = new Computer("Player two", 0, 0, gestures);
@@ -37,31 +37,54 @@ namespace rockPaperGame
             
             
 
-            while (playerOne.GetScore() - playerTwo.GetScore() <= 3)
+            while (round <= limit)
             {
                 playerOneChoice = playerOne.GetGesture();
                 playerTwoChoice = playerTwo.GetGesture();
-
-                //Console.WriteLine(playerOneChoice);
-                //Console.WriteLine(playerTwoChoice);
 
                 int decideWinner = WhoWins(GestureToInt(playerOneChoice), GestureToInt(playerTwoChoice));
 
                 if (decideWinner == 1)
                 {
-                    playerOne.IncreaseScore();
+                    playerOne.IncreaseScore(1);
                 }
                 else if (decideWinner == 2)
                 {
-                    playerTwo.IncreaseScore();
+                    playerTwo.IncreaseScore(1);
                 }
 
                 DisplayWhoWon(decideWinner, playerOne.getName(), playerOne.GetScore(), playerTwo.getName(), playerTwo.GetScore());
-
+                round += 1;
                 Console.WriteLine("When you are ready to proceed, press a key");
                 Console.ReadLine();
             }
-            
+
+            OverallWinner(playerOne.GetScore(), playerTwo.GetScore());
+            EndGame();
+        }
+
+        public void OverallWinner(int playerOneScore, int playerTwoScore)
+        {
+            if (playerOneScore > playerTwoScore)
+            {
+                Console.WriteLine("Player one is the over all winner");
+            }
+            else if (playerOneScore < playerTwoScore)
+            {
+                Console.WriteLine("Player two is the over all winner");
+            }
+            else
+            {
+                Console.WriteLine("Impossible! A tie?!");
+            }
+        }
+
+        public void EndGame()
+        {
+            Console.Clear();
+            Console.WriteLine("Thanks for playing!");
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadLine();
         }
 
         public bool ValidateInput(List<string> expectedInput, string playerInput)
@@ -75,11 +98,11 @@ namespace rockPaperGame
         }
 
         public void DisplayWhoWon(int determineWinner, string playerOneName, int playerOneScore, string playerTwoName, int playerTwoScore) {
-            //Console.Clear();
-            
+            Console.Clear();
+            Console.WriteLine("{0} chose {1} and has a score of: {2}", playerOneName, playerOneChoice, playerOneScore);
+            Console.WriteLine("{0} chose {1} and has a score of: {2}", playerTwoName, playerTwoChoice, playerTwoScore);
             if (determineWinner == 1)
             {
-                
                 Console.WriteLine("Player one wins");
             }
             else if (determineWinner == 2)
@@ -90,8 +113,6 @@ namespace rockPaperGame
             {
                 Console.WriteLine("It's a tie!");
             }
-            Console.WriteLine("{0} chose {1} and has a score of: {2}", playerOneName, playerOneChoice, playerOneScore);
-            Console.WriteLine("{0} chose {1} and has a score of: {2}", playerTwoName, playerTwoChoice, playerTwoScore);
         }
 
         public int GestureToInt(string input)

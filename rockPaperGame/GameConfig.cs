@@ -9,8 +9,8 @@ namespace rockPaperGame
         public string menuOptions = "";
         public string mainMenuChoice;
         public int gameRound = 1;
-        public int spread;
-        public int spreadLimit = 3;
+        public int round = 1;
+        public int limit = 3;
         public string playerOneChoice;
         public string playerTwoChoice;
         public bool validationCheck = false;
