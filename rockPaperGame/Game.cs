@@ -24,21 +24,13 @@ namespace rockPaperGame
         public void GameLoop()
         {
             Player playerOne = new Player("Player one", 0, 0, gestures);
-            Player playerTwo = new Player("Player two", 0, 0, gestures);
-
-            //display.BuildMenu("Please chose:", string.Join(" ", gestures.ToArray()));
+            Player playerTwo = new Computer("Player two", 0, 0, gestures);
 
             playerOneChoice = playerOne.GetGesture();
             playerTwoChoice = playerTwo.GetGesture();
 
             Console.WriteLine(playerOneChoice);
             Console.WriteLine(playerTwoChoice);
-
-            //display.BuildMenu("Player One please chose:", string.Join(" ", gestures.ToArray()));
-            //    playerOneChoice = (Console.ReadLine());
-
-            //    display.BuildMenu("Player two please chose:", string.Join(" ", gestures.ToArray()));
-            //    playerTwoChoice = (Console.ReadLine());
 
             int decideWinner = WhoWins(GestureToInt(playerOneChoice), GestureToInt(playerTwoChoice));
             DisplayWhoWon(decideWinner);
@@ -55,7 +47,7 @@ namespace rockPaperGame
         }
 
         public void DisplayWhoWon(int input) {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("Player one choice: " + playerOneChoice);
             Console.WriteLine("Player two choice: " + playerTwoChoice);
             if (input == 1)
@@ -98,17 +90,17 @@ namespace rockPaperGame
             int whoWon = (5 + playerOne - playerTwo) % 5;
             int returnValue = 0;
 
-            if (whoWon == 0) // tie
+            if (whoWon == 0)
             {
                 returnValue = 3;
                 return returnValue;
             }
-            else if (whoWon == 1 || whoWon == 3) // player 1 wins
+            else if (whoWon == 1 || whoWon == 3)
             {
                 returnValue = 1;
                 return returnValue;
             }
-            else if (whoWon == 2 || whoWon == 4) // player 2 wins
+            else if (whoWon == 2 || whoWon == 4)
             {
                 returnValue = 2;
                 return returnValue;

@@ -13,8 +13,6 @@ namespace rockPaperGame
         public int spreadLimit = 3;
         public string playerOneChoice;
         public string playerTwoChoice;
-        public int playerOneNumber;
-        public int playerTwoNumber;
         public bool validationCheck = false;
 
         public List<string> gestures = new List<string>(new string[] {

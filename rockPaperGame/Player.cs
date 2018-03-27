@@ -8,12 +8,12 @@ namespace rockPaperGame
 {
     class Player
     {
-        private string name;
-        private int score;
-        private int wins;
-        private List<string> gestures;
-        private bool validationCheck = false;
-        private string playerChoice;
+        protected string name;
+        protected int score;
+        protected int wins;
+        protected List<string> gestures;
+        protected bool validationCheck = false;
+        protected string playerChoice;
 
         public Player(string name, int score, int wins, List<string> gestures)
         {
@@ -23,12 +23,12 @@ namespace rockPaperGame
             this.gestures = gestures;
         }
 
-        public string GetGesture()
+        public virtual string GetGesture()
         {
             while (validationCheck == false)
             {
                 Console.Clear();
-                Console.WriteLine("{0} please choose from the follow {1} ", name, string.Join(" ", gestures.ToArray()));
+                Console.WriteLine("{0} please choose from the following: {1} ", name, string.Join(" ", gestures.ToArray()));
                 playerChoice = Console.ReadLine();
                 validationCheck = ValidateInput(gestures, playerChoice);
             }
