@@ -10,7 +10,6 @@ namespace rockPaperGame
     {
         static void Main(string[] args)
         {
-
             // consistent commits. 
             // incorporate inheritance into game.
             // account for and handle bad user input, ensuring that any user input is validated and reobtained if necessary.
@@ -23,6 +22,7 @@ namespace rockPaperGame
             game.GameStart();
             game.GameLoop();
             game.EndGame();
+
             
         }
     }

@@ -8,12 +8,15 @@ namespace rockPaperGame
 {
     class Game : GameConfig
     {
-        Display display = new Display();
+        Player playerOne;
+        Player playerTwo;
+        Display display;  
 
         public void GameStart()
         {
             while (!validationCheck)
             {
+                display = new Display();
                 display.BuildMenu("Welcome to " + string.Join(" ", gestures.ToArray()), "Would you like to verse another (P)layer or the (C)omputer");
                 List<string> acceptableInput = new List<string>(new string[] { "p", "c" });
                 mainMenuChoice = Console.ReadLine();
@@ -23,19 +26,17 @@ namespace rockPaperGame
 
         public void GameLoop()
         {
-            Player playerOne = new Player("Player one", 0, 0, gestures);
-            Player playerTwo = new Computer("Player two", 0, 0, gestures);
+            playerOne = new Player("Player one", 0, 0, gestures);
+            //Player playerTwo = new Player("Player two", 0, 0, gestures);
 
-            //if (mainMenuChoice == "c")
-            //{
-            //    Player playerTwo = new Computer("Player two", 0, 0, gestures);
-            //}
-            //else
-            //{
-            //    Player playerTwo = new Player("Player two", 0, 0, gestures);
-            //}
-            
-            
+            if (mainMenuChoice == "c")
+            {
+                playerTwo = new Computer("Player two", 0, 0, gestures);
+            }
+            else
+            {
+                playerTwo = new Player("Player two", 0, 0, gestures);
+            }
 
             while (round <= limit)
             {
